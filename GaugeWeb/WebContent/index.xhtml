@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Bookmark!</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css"></link>
+</h:head>
+
+<h:body>
+	<h:form>  
+    <p:growl id="messages"/>
+ 
+     <p:menubar style="height:40px">
+        <p:menuitem url="http://localhost:8888/bookmarkWeb/pages/admin/AreaAdmin.jsf" value="Gauge" > 
+        
+        </p:menuitem>
+     
+        
+    </p:menubar>
+	</h:form>
+	
+	<p:layout style="min-width:400px;min-height:200px;">
+    	<p:layoutUnit position="west" resizable="false" size="200">
+			<p:dataList value="" var="car" type="definition">
+        		<f:facet name="header">
+            		Sistema Gauge
+        		</f:facet>
+        		 	
+        		
+        		
+    		</p:dataList>
+    	</p:layoutUnit>
+ 
+    	<p:layoutUnit position="center">
+        	      	        	
+        	<h:form id="form">
+             
+ 			<p:growl id="msgs" showDetail="true" />
+ 
+		    <h3 style="margin-top:0"/>
+		    <p:tabView>
+		       
+		        
+    		</p:tabView>
+    		</h:form>
+    		
+			
+			<h:panelGrid columns="2" style="margin-top: 10px">
+			
+				<p:outputLabel for="option" value="Options: " />
+	            <p:selectOneMenu id="option" value="#{chartView.option}" style="width:150px">
+	                
+	                <f:selectItem itemLabel="Select Brands" itemValue="" noSelectionOption="true" />
+	                <f:selectItems value="#{chartView.hash}" />
+	            </p:selectOneMenu>
+			</h:panelGrid>
+			
+			<p:message for="option" />
+	        <p:commandButton id="btnE" value="Filter" type="submit" action="#{chartView.filter}"/>
+			
+				
+			<br />
+    		<p:chart type="bar" model="#{chartView.barModel}" style="height:300px"/>
+    		
+    	</p:layoutUnit>
+    	
+    	
+    	<p:layoutUnit position="east" resizable="false" size="400" minSize="40" maxSize="200">
+			
+    	</p:layoutUnit>
+    	
+	</p:layout>
+
+</h:body>
+</html>
